@@ -2,6 +2,12 @@
 
 ![ERP Admin Panel Screenshot](./docs/images/sc1.png)
 
+<p align="center">
+  <img src="https://github.com/namanabbad02/ERP-like-Student-Enrollment-System/docs/images/sc1.png?raw=true" width="50%" />
+  &nbsp; <!-- adds some space between the images -->
+  <img src="https://github.com/namanabbad02/ERP-like-Student-Enrollment-System/docs/images/sc3.png?raw=true" width="50%" />
+</p>
+
 
 A full-stack, modular ERP system built with Python and Django to manage student information, course enrollment, and automated financial processing. This project mimics enterprise-level business workflows by integrating a powerful Oracle Database backend with automated PL/SQL procedures and triggers.
 
@@ -52,7 +58,7 @@ The application follows a logical, automated workflow that mirrors real-world bu
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/erp-student-enrollment-django.git](https://github.com/namanabbad02/ERP-like-Student-Enrollment-System.git)
+    git clone https://github.com/namanabbad02/ERP-like-Student-Enrollment-System.git
     cd erp-student-enrollment-django
     ```
 
