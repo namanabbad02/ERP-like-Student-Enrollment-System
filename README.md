@@ -3,9 +3,9 @@
 ![ERP Admin Panel Screenshot](./docs/images/sc1.png)
 
 <p align="center">
-  <img src="https://github.com/namanabbad02/ERP-like-Student-Enrollment-System/docs/images/sc1.png?raw=true" width="50%" />
+  <img src="https://github.com/namanabbad02/ERP-like-Student-Enrollment-System/blob/main/docs/images/sc1.png?raw=true" width="50%" />
   &nbsp; <!-- adds some space between the images -->
-  <img src="https://github.com/namanabbad02/ERP-like-Student-Enrollment-System/docs/images/sc3.png?raw=true" width="50%" />
+  <img src="https://github.com/namanabbad02/ERP-like-Student-Enrollment-System/blob/main/docs/images/sc3.png?raw=true" width="50%" />
 </p>
 
 
