@@ -1,0 +1,55 @@
+1. Stored Procedure to Generate Invoice
+-- This PL/SQL procedure creates an invoice for a new enrollment.
+CREATE OR REPLACE PROCEDURE GENERATE_INVOICE_FOR_ENROLLMENT (
+    p_student_id IN VARCHAR2,
+    p_course_id IN VARCHAR2
+) AS
+    v_course_fee NUMBER;
+    v_student_exists NUMBER;
+BEGIN
+    -- Check if the student exists
+    SELECT COUNT(*) INTO v_student_exists FROM STUDENTS_STUDENT WHERE STUDENT_ID = p_student_id;
+
+    IF v_student_exists > 0 THEN
+        -- Get the fee for the course
+        SELECT FEE INTO v_course_fee FROM COURSES_COURSE WHERE COURSE_ID = p_course_id;
+
+        -- Insert a new invoice record
+        INSERT INTO FINANCE_INVOICE (STUDENT_ID, AMOUNT, STATUS, DATE_GENERATED, DUE_DATE)
+        VALUES (p_student_id, v_course_fee, 'Unpaid', SYSDATE, SYSDATE + 30); -- Due in 30 days
+    ELSE
+        -- Optionally, raise an error if student not found
+        RAISE_APPLICATION_ERROR(-20001, 'Student does not exist.');
+    END IF;
+
+    COMMIT;
+END;
+/
+
+2. Trigger to Update Invoice Status
+-- This trigger updates the invoice status when a full payment is made.
+CREATE OR REPLACE TRIGGER UPDATE_INVOICE_ON_PAYMENT
+AFTER INSERT ON FINANCE_PAYMENT -- Assuming a FINANCE_PAYMENT table
+FOR EACH ROW
+DECLARE
+    v_total_paid NUMBER;
+    v_invoice_amount NUMBER;
+BEGIN
+    -- Get the total amount for the invoice
+    SELECT AMOUNT INTO v_invoice_amount
+    FROM FINANCE_INVOICE
+    WHERE INVOICE_ID = :NEW.INVOICE_ID;
+
+    -- Calculate total paid for this invoice
+    SELECT SUM(AMOUNT_PAID) INTO v_total_paid
+    FROM FINANCE_PAYMENT
+    WHERE INVOICE_ID = :NEW.INVOICE_ID;
+
+    -- If total paid is greater than or equal to the invoice amount, update status
+    IF v_total_paid >= v_invoice_amount THEN
+        UPDATE FINANCE_INVOICE
+        SET STATUS = 'Paid'
+        WHERE INVOICE_ID = :NEW.INVOICE_ID;
+    END IF;
+END;
+/
