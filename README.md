@@ -1,15 +1,14 @@
 # ERP-like Student Enrollment & Financial Management System
 <!-- ![ERP Admin Panel Screenshot](./docs/images/sc1.png)-->
 
-<p align="center">
 <div align="center">
   <table>
     <tr>
       <td>
-        <img src="./docs/images/sc1.png" alt="Admin Panel Screenshot" width="400">
+        <img src="./docs/images/erp-admin-panel.png" alt="Admin Panel Screenshot" width="100%">
       </td>
       <td>
-        <img src="./docs/images/sc3.png" alt="Enrollments Page Screenshot" width="400">
+        <img src="./docs/images/erp-enrollments.png" alt="Enrollments Page Screenshot" width="100%">
       </td>
     </tr>
   </table>
